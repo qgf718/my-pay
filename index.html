@@ -1,0 +1,48 @@
+<html>
+ <head>
+  <title id="title">转账准备中......</title>
+ </head>
+ <body>
+  <script>
+  function getUA(){
+   return navigator.userAgent;
+  }
+  alipayURL="https://qr.alipay.com/tsx05925siswyuzcmgmqoa2";//从支付宝收款二维码里得到的URL
+  wechat = "MicroMessenger";
+  alipay = "AlipayClient";
+  qq = "QQ";
+  userAgent = getUA();
+  if(userAgent.indexOf(wechat)!=-1){
+   //微信
+   window.location.href="static/wechat.png"
+  }else if(userAgent.indexOf(qq)!=-1){
+   //QQ
+   window.location.href="static/qq.png"
+  }else if(userAgent.indexOf(alipay)!=-1){
+   //支付宝
+   window.location.href=alipayURL;
+  }else{
+   //不是支付宝、微信或QQ中的一个
+   alert("无法识别的支付软件！请在支付宝、微信或QQ中打开此链接或扫一扫此二维码！");
+  }
+</script>
+  <div id="container">
+   <h1>详细信息：</h1>
+   <h3>如果您遇到了支付问题，请立即按以下方式联系收款人进行处理：</h3>
+   <p>微信搜索：qgf718</p>
+   <p>QQ搜索：503374041</p>
+   <p>支付宝搜索：kazlaz</p>
+   <p>...</p>
+   <p>...</p>
+   <p>...</p>
+   <h4>当前设备信息：</h4>
+   <div id="ua"><p>UA:</p></div> 
+   <duv id="link"><p>URL:</p></div>
+   <script>
+    document.getElementById("link").innerHTML = "URL:"+ window.location.href
+    document.getElementById("ua").innerHTML=("UA:"+navigator.userAgent);
+    document.getElementById("title").innerHTML="错误！";
+   </script>
+  </div>
+ </body>
+</html>
